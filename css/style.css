@@ -91,7 +91,7 @@ html {
 }
 
 body {
-  font-family: "Sinkin", sans-serif;
+  font-family: sans-serif;
   scroll-behavior: smooth;
 }
 body::-webkit-scrollbar {
@@ -412,7 +412,7 @@ body .change::after {
 }
 
 .home__upper-part {
-  background-image: url("/img/rest.jpg");
+  background-image: url(/img/rest.jpg);
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -703,21 +703,6 @@ body .change::after {
   color: var(--clr3-text--);
 }
 
-@font-face {
-  font-family: "Sinkin";
-  src: url("/fonts/SinkinSans-400Regular.otf");
-  font-weight: normal;
-}
-@font-face {
-  font-family: "Sinkin";
-  src: url("/fonts/SinkinSans-500Medium.otf");
-  font-weight: 500;
-}
-@font-face {
-  font-family: "Sinkin";
-  src: url("/fonts/SinkinSans-700Bold.otf");
-  font-weight: 700;
-}
 .added {
   width: 100%;
   max-width: 380px;
