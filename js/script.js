@@ -97,6 +97,24 @@ menuBurger.addEventListener('click', () => {
 
 // end of menu burger
 
+
+// cart ( show / hide )
+
+cart.addEventListener('click', () => {
+    document.body.classList.add('dark-background');
+    document.body.style.overflow = 'hidden';
+    added.classList.add('pop-up');
+});
+
+closeAdded.addEventListener('click', () => {
+    document.body.classList.remove('dark-background');
+    document.body.style.overflowY = 'scroll';
+    added.classList.remove('pop-up');
+});
+
+// end of cart ( show / hide )
+
+
 // filter
 
 productsNavList.addEventListener('click', (e) => {
@@ -116,6 +134,29 @@ productsInput.addEventListener('keyup', () => {
 
 // end of filter
 
+
+// item buttons
+
+homeItemsList.addEventListener('click', (e) => {
+    checkIfContainsButton(e);
+});
+
+productsItemsList.addEventListener('click', (e) => {
+    checkIfContainsButton(e);
+});
+
+// end of item buttons
+
+
+// removing items from cart
+
+addedItemsList.addEventListener('click', (e) => {
+    removeAddedItems(e);
+    countAddedItemsAmount(e);
+});
+
+// end of removing items from cart
+
 // _________________END OF LISTENERS__________________
 
 
@@ -125,7 +166,10 @@ productsInput.addEventListener('keyup', () => {
 // content display
 
 createTemplatePages();
+createTemplateCart();
+countMaxPrice();
 showFilterButtons();
+checkButtonsCondition();
 
 // end of content display
 
@@ -283,6 +327,208 @@ function showFilterButtons() {
 // end of filter
 
 
+// item button
+
+function checkIfContainsButton(e) {
+    if (e.target.classList.contains('item-button')) {
+        addToCart(e.target);
+    }
+}
+
+function addToCart(button) {
+    const item = button.closest('.item');
+    const itemId = item.getAttribute('data-item-id');
+
+    items.forEach(item => {
+        if (item.id === parseInt(itemId)) {
+            addedItems.push(item);
+            localStorage.setItem('added', JSON.stringify(addedItems));
+            createTemplateCart();
+        }
+    });
+
+    checkButtonsCondition();
+};
+
+// end of item button
+
+
+// buttons condition
+
+function checkButtonsCondition(){
+    const itemsOnThePage = document.querySelectorAll('.item');
+
+    itemsOnThePage.forEach(allItems => {
+        addedItems.forEach(itemsInCart => {
+            if(itemsInCart.id === parseInt(allItems.getAttribute('data-item-id'))){
+                const buttonProducts = allItems.querySelector('.item-button');
+                const buttonAddedProducts = allItems.querySelector('.item-button-added');
+
+                buttonProducts.classList.add('hide');
+                buttonAddedProducts.classList.remove('hide');
+            }
+        })
+    })
+    
+}
+
+// buttons condition
+
+
+// count total
+
+function countTotal(price) {
+    total += price;
+
+    if (total > 0) {
+        addedCheckout.classList.remove('hide');
+    } else {
+        addedCheckout.classList.add('hide');
+    }
+
+    addedTotal.innerText = `Total: $${total}`;
+}
+
+// end of count total
+
+
+// removing items from cart
+
+function removeAddedItems(e) {
+    if (e.target.classList.contains('added__item-remove')) {
+        const item = e.target.closest('.added__item');
+        let itemToRemove;
+        addedItems.forEach(el => {
+            if (el.id === parseInt(item.getAttribute('data-item-id'))) {
+                itemToRemove = el;
+            }
+        });
+
+        addedItems = addedItems.filter(el => {
+            if (el === itemToRemove) {
+                return false
+            } else {
+                return el
+            }
+        });
+
+        createTemplateCart();
+        localStorage.setItem('added', JSON.stringify(addedItems));
+
+        const itemAmountInCart = item.querySelector('.added__item-amount');
+        let elementToDelete;
+
+        amountArr.forEach(el => {
+            if (parseInt(el[1]) === itemToRemove.id) {
+                elementToDelete = el;
+                amountArr.splice(amountArr.indexOf(elementToDelete), 1)
+                localStorage.setItem('amount', JSON.stringify(amountArr));
+            }
+        });
+
+        countTotal(-(itemToRemove.price * parseInt(itemAmountInCart.innerText)));
+
+        itemsList.forEach(list => {
+            const listOfItems = list.querySelectorAll('.item');
+            listOfItems.forEach(el => {
+                if (el.getAttribute('data-item-id') === item.getAttribute('data-item-id')) {
+                    el.querySelector('.item-button').classList.remove('hide');
+                    el.querySelector('.item-button-added').classList.add('hide');
+                }
+            });
+        });
+
+        cartAllItems = 0;
+        countHowManyAdded(cartAllItems);
+
+        if (addedItems.length > 0) {
+            createTemplateCart();
+        }
+    }
+}
+
+// end of removing items from cart
+
+
+// increase products in the cart
+
+function countAddedItemsAmount(e){
+    if(e.target.classList.contains('angle')){
+        let itemAmount = 0;
+        
+        increaseItems(e);
+        decreaseItems(e);
+        itemAmount = parseInt(e.target.closest('.added__item').querySelector('.added__item-amount').innerText);
+
+        amountArr.push([itemAmount, e.target.closest('.added__item').getAttribute('data-item-id')]);
+        const amountArrLastEl = amountArr[amountArr.length - 1];
+
+        if (amountArr.length > 1) {
+            for (let i = 0; i < amountArr.length - 1; i++) {
+                if (amountArr[i][1] === amountArrLastEl[1]) {
+                    amountArr.splice(i, 1);
+                }
+            }
+        };
+        localStorage.setItem('amount', JSON.stringify(amountArr));
+    }
+}
+
+function decreaseItems(e){
+    if (e.target.classList.contains('fa-angle-down')) {
+        const amountEl = e.target.previousElementSibling;
+        let amount = parseInt(e.target.previousElementSibling.innerText);
+
+        if (amount >= 2) {
+            amount--;
+        }
+        amountEl.innerText = amount;
+        showAmountOfItemInCart();
+    }
+}
+
+function increaseItems(e){
+    if (e.target.classList.contains('fa-angle-up')) {
+        const amountEl = e.target.nextElementSibling;
+        let amount = parseInt(e.target.nextElementSibling.innerText);
+
+        if (amount < 10) {
+            amount++;
+        }
+        amountEl.innerText = amount;
+        showAmountOfItemInCart();
+    }
+}
+
+// end of increase products in the cart
+
+
+// how many items in the cart
+
+function countHowManyAdded(num) {
+    addedAllAmount.innerText = num;
+};
+
+// end of how many items in the cart
+
+
+// count how many items in cart
+
+function showAmountOfItemInCart(){
+    cartAllItems = 0;
+    total = 0;
+    countTotal(0);
+    const howManyItems = document.querySelectorAll('.added__item');
+    howManyItems.forEach(item => {
+        cartAllItems += parseInt(item.querySelector('.added__item-amount').innerText);
+        countTotal((parseInt(item.querySelector('.added__item-price').innerText.slice(1))) * (parseInt(item.querySelector('.added__item-amount').innerText)));
+    });
+    countHowManyAdded(cartAllItems);
+}
+
+// end of count how many items in cart
+
+
 // creating templates
 
 function createTemplatePages() {
@@ -314,6 +560,42 @@ function showItemsOnPage({id, image, name, price}) {
                         <div class="item-price">$${price}</div>
                     </div>`;
 };
+
+function createTemplateCart() {
+    addedItemsList.innerHTML = '';
+    if(addedItems.length > 0) {
+        addedItems.forEach(item => {
+            addedItemsList.innerHTML += showCartItems(item);
+        });
+
+        showAmountOfItemInCart();
+    }
+}
+
+function showCartItems({id, image, name, price}) {
+    let amountNum;
+    amountArr.forEach(el => {
+        if(parseInt(el[1]) === id){
+            amountNum = el[0];
+        }
+    });
+    
+    return `<div class="added__item" data-item-id="${id}">
+                    <div class="added__item-image">
+                    <img src=${image} alt="furniture">
+                </div>
+                <div class="added__item-body">
+                    <div class="added__item-title">${name}</div>
+                    <div class="added__item-price">$${price}</div>
+                    <button class="added__item-remove">remove</button>
+                </div>
+                <div class="added__item-counter">
+                    <i class="fa-solid fa-angle-up angle"></i>
+                    <div class="added__item-amount">${amountNum === undefined ? 1 : amountNum}</div>
+                    <i class="fa-solid fa-angle-down angle"></i>
+                </div>
+            </div>`
+}
 
 // end of creating templates
 
