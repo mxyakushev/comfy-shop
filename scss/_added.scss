@@ -1,0 +1,131 @@
+.added {
+    width: 100%;
+    max-width: 380px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1001;
+    right: -100%;
+    transition: right .3s ease;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--clr-white--);
+    padding: 20px;
+
+    @media screen and (max-width: 600px) {
+        max-width: none;
+    }
+}
+
+.added__close {
+    margin: 0 0 10px 0;
+
+    i {
+        font-size: 35px;
+        color: var(--clr1-text--);
+        transition: opacity .3s ease;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+
+.added__title {
+    font-family: 'Kaushan Script', cursive;
+    font-size: 30px;
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+
+.added__items-list {
+    flex: 1 1 auto;
+    overflow-y: scroll;
+    margin-bottom: 30px;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.added__item {
+    display: flex;
+    align-items: center;
+    margin: 0 0 20px 0;
+
+    i {
+        color: var(--clr2-btn--);
+        font-size: 20px;
+        transition: transform .3s ease;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+}
+
+.added__item-image {
+    max-width: 100px;
+    max-height: 70px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 0 15px 0 0;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.added__item-body {
+    margin: 0 auto 0 0;
+}
+
+.added__item-title {
+    margin: 0 0 5px 0;
+}
+
+.added__item-price {
+    margin: 0 0 15px 0;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--clr1-text--);
+}
+
+.added__item-remove {
+    background-color: transparent;
+    color: var(--clr3-text--);
+    transition: color .3s ease;
+
+    &:hover {
+        color: var(--clr2-text--);
+    }
+}
+
+.added__item-counter {
+    text-align: center;
+    margin: 0 5px 0 0;
+}
+
+.added__total {
+    text-align: center;
+    font-family: 'Kaushan Script', cursive;
+    font-size: 25px;
+    margin: 0 0 20px 0;
+}
+
+.added__checkout {
+    padding: 8px;
+    border-radius: 4px;
+    color: var(--clr-white--);
+    background-color: var(--clr1-btn--);
+    transition: transform .3s ease;
+    margin: 0 auto 30px auto;
+    width: 210px;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
