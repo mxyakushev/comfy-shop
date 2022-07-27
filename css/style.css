@@ -1,0 +1,844 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Sinkin", sans-serif;
+  scroll-behavior: smooth;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+li {
+  list-style: none;
+}
+
+body .no-scroll {
+  overflow: hidden;
+}
+
+:root {
+  --clr-header--: rgb(250, 243, 243);
+  --clr-dark--: rgba(0, 0, 0, 0.505);
+  --clr-white--: #fff;
+  --clr-black--: #000;
+  --clr1-text--: rgb(49, 89, 160);
+  --clr2-text--: rgb(172, 66, 66);
+  --clr3-text--: rgb(63, 61, 61);
+  --clr1-background--: rgba(139, 165, 209, 0.337);
+  --clr-item-hover--: rgba(173, 151, 120, 0.463);
+  --clr1-btn--: rgb(175, 74, 2);
+  --clr2-btn--: rgb(222, 93, 0);
+  --clr3-btn--: rgb(8, 110, 62);
+  --clr4-btn--: rgb(4, 138, 38);
+}
+
+.black {
+  --clr-header--: #000;
+}
+
+.container {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+body .hide {
+  display: none;
+}
+
+body .pop-up {
+  right: 0;
+}
+
+.page-title {
+  padding: 70px 30px;
+  background-color: var(--clr1-background--);
+  margin: 0 0 40px 0;
+}
+.page-title .container {
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--clr1-text--);
+}
+
+.item {
+  width: 100%;
+  max-width: 420px;
+  min-width: 300px;
+  margin: 0 0 20px 0;
+}
+@media screen and (max-width: 425px) {
+  .item {
+    min-width: 250px;
+  }
+}
+
+.item-image {
+  width: 100%;
+  height: 100%;
+  max-height: 250px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  margin: 0 0 10px 0;
+  position: relative;
+}
+.item-image:hover .item-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--clr-item-hover--);
+  transition: background 0.3s ease;
+}
+.item-image img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+.item-image .item-button {
+  position: absolute;
+  padding: 8px 10px;
+  right: -100%;
+  bottom: 50px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-color: var(--clr1-btn--);
+  color: var(--clr-white--);
+  transition: background 0.3s ease, right 0.3s ease;
+}
+.item-image .item-button:hover {
+  background-color: var(--clr2-btn--);
+}
+.item-image .item-button-added {
+  position: absolute;
+  padding: 8px 10px;
+  right: -100%;
+  bottom: 50px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-color: var(--clr3-btn--);
+  color: var(--clr-white--);
+  transition: background 0.3s ease, right 0.3s ease;
+}
+.item-image .item-button-added:hover {
+  background-color: var(--clr4-btn--);
+}
+.item-image div:hover ~ button,
+.item-image button:hover {
+  right: 0;
+}
+@media screen and (max-width: 1024px) {
+  .item-image:hover .item-inner {
+    background-color: transparent;
+    transition: none;
+  }
+  .item-image .item-button {
+    bottom: 20px;
+    transition: none;
+    font-size: 20px;
+  }
+  .item-image .item-button-added {
+    bottom: 20px;
+    transition: none;
+    font-size: 20px;
+  }
+}
+
+.item-name {
+  text-align: center;
+  margin: 0 0 10px 0;
+}
+
+.item-price {
+  text-align: center;
+  font-weight: 700;
+}
+
+#selected {
+  color: var(--clr2-text--);
+}
+
+.dark-background::before {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.341);
+  width: 100%;
+  height: 150%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 500;
+}
+
+.header {
+  font-size: 18px;
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  color: var(--clr-header--);
+  padding: 0 30px;
+}
+.header .container {
+  padding: 25px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-list {
+  display: flex;
+  width: 100%;
+  max-width: 300px;
+  justify-content: space-between;
+}
+.menu-list a {
+  color: inherit;
+  transition: opacity 0.3s ease;
+}
+.menu-list a:hover {
+  opacity: 0.7;
+}
+@media screen and (max-width: 880px) {
+  .menu-list {
+    font-size: 40px;
+    line-height: 46px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    justify-content: flex-start;
+    text-align: center;
+    top: 0;
+    left: -100%;
+    max-width: none;
+    z-index: 100;
+    background-color: rgb(207, 202, 200);
+    height: 100vh;
+    transition: 0.3s left ease;
+    color: #000;
+    padding: 50px;
+  }
+  .menu-list li {
+    margin: 30px 0;
+  }
+}
+
+.cart {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 24px;
+  position: relative;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+.cart:hover {
+  opacity: 0.7;
+}
+@media screen and (max-width: 880px) {
+  .cart {
+    max-width: 40px;
+  }
+}
+
+.added-amount {
+  position: absolute;
+  background-color: var(--clr2-btn--);
+  color: var(--clr-white--);
+  font-size: 15px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  padding: 4px 0 0;
+  font-weight: 700;
+  border-radius: 50%;
+  right: -8px;
+  top: -8px;
+}
+
+.logo {
+  font-family: "Kaushan Script", cursive;
+  cursor: pointer;
+  font-size: 40px;
+  text-shadow: 2px 5px 5px rgba(0, 0, 0, 0.32);
+  transition: transform 0.3s ease;
+}
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.menu-burger {
+  display: none;
+  position: relative;
+  width: 40px;
+  height: 5px;
+  background-color: var(--clr-header--);
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: 0.3s;
+  transform: translateY(-100%);
+}
+@media screen and (max-width: 880px) {
+  .menu-burger {
+    display: block;
+  }
+}
+
+.menu-burger::before,
+.menu-burger::after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  right: 0;
+  background-color: var(--clr-header--);
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.menu-burger::before {
+  top: -10px;
+  width: 30px;
+}
+
+.menu-burger::after {
+  top: 10px;
+  width: 35px;
+}
+
+body .appear {
+  left: 0;
+}
+
+body .change {
+  background-color: #000;
+}
+body .change::before {
+  background-color: #000;
+}
+body .change::after {
+  background-color: #000;
+}
+
+.home__upper-part {
+  background-image: url("/img/rest.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  padding: 0 30px;
+  color: var(--clr-white--);
+  margin: 0 0 65px 0;
+}
+.home__upper-part .container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+}
+.home__upper-part::before {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.341);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#dark-background {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.416);
+}
+
+.home__upper-title {
+  font-size: 88px;
+  font-family: "Kaushan Script", cursive;
+  margin: 0 0 20px 0;
+}
+
+.home__upper-subtitle {
+  font-size: 30px;
+  font-weight: 500;
+  margin: 0 0 15px 0;
+}
+
+.home__upper-button {
+  background-color: transparent;
+  padding: 10px;
+  color: inherit;
+  border: 2px solid var(--clr-white--);
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.home__upper-button:hover {
+  background-color: var(--clr-white--);
+  color: var(--clr-black--);
+}
+
+.home__lower-part {
+  padding: 0 30px 100px;
+}
+.home__lower-part .container {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home__lower-title {
+  font-size: 28px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0 0 40px 0;
+}
+.home__lower-title span:first-child {
+  color: var(--clr1-btn--);
+}
+
+.home__items-list {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  grid-template: 1fr/repeat(auto-fit, minmax(300px, 1fr));
+  grid-column-gap: 30px;
+  margin: 0 0 40px 0;
+}
+
+.home__lower-button {
+  padding: 8px;
+  border-radius: 4px;
+  color: var(--clr-white--);
+  background-color: var(--clr1-btn--);
+  transition: transform 0.3s ease;
+}
+.home__lower-button:hover {
+  transform: scale(1.05);
+}
+
+@media screen and (max-width: 880px) {
+  .home__upper-button {
+    font-size: 20px;
+  }
+  .home__lower-button {
+    font-size: 26px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .home__upper-title {
+    font-size: 60px;
+  }
+  .home__upper-subtitle {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .home__upper-title {
+    font-size: 50px;
+  }
+  .home__upper-subtitle {
+    font-size: 16px;
+  }
+  .home__items-list {
+    grid-template: 310px/repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: 310px;
+  }
+}
+.products {
+  padding: 85px 0 50px;
+}
+
+.products__action {
+  margin: 0 50px 0 0;
+}
+@media screen and (max-width: 600px) {
+  .products__action {
+    margin: 0 0 30px 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.products__input {
+  padding: 10px;
+  font-size: 16px;
+  background-color: var(--clr1-background--);
+  max-width: 200px;
+  border-radius: 5px;
+  margin: 0 0 30px 0;
+}
+@media screen and (max-width: 600px) {
+  .products__input {
+    max-width: none;
+    width: 100%;
+    font-size: 30px;
+    margin: 0 0 35px 0;
+  }
+}
+
+.products__navigation-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0 0 10px 0;
+}
+@media screen and (max-width: 600px) {
+  .products__navigation-title {
+    font-size: 30px;
+  }
+}
+
+.products__navigation-list {
+  margin: 0 0 30px 0;
+}
+.products__navigation-list li {
+  padding: 5px;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+.products__navigation-list li button {
+  color: var(--clr1-text--);
+  background-color: transparent;
+}
+.products__navigation-list li button:hover {
+  opacity: 0.8;
+}
+@media screen and (max-width: 600px) {
+  .products__navigation-list {
+    margin: 0 0 35px 0;
+  }
+  .products__navigation-list li {
+    margin: 0 0 10px 0;
+  }
+  .products__navigation-list li button {
+    font-size: 20px;
+  }
+}
+
+.products__range-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0 0 15px 0;
+}
+@media screen and (max-width: 600px) {
+  .products__range-title {
+    font-size: 30px;
+  }
+}
+
+.products__range-input {
+  margin: 0 0 15px 0;
+}
+@media screen and (max-width: 600px) {
+  .products__range-input {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+#output {
+  color: var(--clr1-text--);
+}
+@media screen and (max-width: 600px) {
+  #output {
+    font-size: 20px;
+  }
+}
+
+.products__content {
+  padding: 0 30px;
+}
+.products__content .container {
+  display: flex;
+}
+@media screen and (max-width: 600px) {
+  .products__content .container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.products__items-list {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  grid-template: 270px/1fr 1fr 1fr;
+  grid-column-gap: 30px;
+  grid-row-gap: 40px;
+  grid-auto-rows: 300px;
+  overflow: hidden;
+}
+@media screen and (max-width: 1270px) {
+  .products__items-list {
+    grid-template: 270px/1fr 1fr;
+  }
+}
+@media screen and (max-width: 880px) {
+  .products__items-list {
+    grid-template: 270px/1fr;
+  }
+}
+@media screen and (max-width: 600px) {
+  .products__items-list {
+    grid-template-rows: 310px;
+  }
+}
+
+.about {
+  padding: 85px 0 50px;
+}
+
+.about__title {
+  font-size: 28px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0 0 40px 0;
+}
+.about__title span:first-child {
+  color: var(--clr1-btn--);
+}
+
+.about__text {
+  padding: 0 30px;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  line-height: 26px;
+  color: var(--clr3-text--);
+}
+
+@font-face {
+  font-family: "Sinkin";
+  src: url("/fonts/SinkinSans-400Regular.otf");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Sinkin";
+  src: url("/fonts/SinkinSans-500Medium.otf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Sinkin";
+  src: url("/fonts/SinkinSans-700Bold.otf");
+  font-weight: 700;
+}
+.added {
+  width: 100%;
+  max-width: 380px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1001;
+  right: -100%;
+  transition: right 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--clr-white--);
+  padding: 20px;
+}
+@media screen and (max-width: 600px) {
+  .added {
+    max-width: none;
+  }
+}
+
+.added__close {
+  margin: 0 0 10px 0;
+}
+.added__close i {
+  font-size: 35px;
+  color: var(--clr1-text--);
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+.added__close i:hover {
+  opacity: 0.8;
+}
+
+.added__title {
+  font-family: "Kaushan Script", cursive;
+  font-size: 30px;
+  text-align: center;
+  margin: 0 0 20px 0;
+}
+
+.added__items-list {
+  flex: 1 1 auto;
+  overflow-y: scroll;
+  margin-bottom: 30px;
+}
+.added__items-list::-webkit-scrollbar {
+  display: none;
+}
+
+.added__item {
+  display: flex;
+  align-items: center;
+  margin: 0 0 20px 0;
+}
+.added__item i {
+  color: var(--clr2-btn--);
+  font-size: 20px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.added__item i:hover {
+  transform: scale(1.2);
+}
+
+.added__item-image {
+  max-width: 100px;
+  max-height: 70px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin: 0 15px 0 0;
+}
+.added__item-image img {
+  width: 100%;
+  height: 100%;
+}
+
+.added__item-body {
+  margin: 0 auto 0 0;
+}
+
+.added__item-title {
+  margin: 0 0 5px 0;
+}
+
+.added__item-price {
+  margin: 0 0 15px 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--clr1-text--);
+}
+
+.added__item-remove {
+  background-color: transparent;
+  color: var(--clr3-text--);
+  transition: color 0.3s ease;
+}
+.added__item-remove:hover {
+  color: var(--clr2-text--);
+}
+
+.added__item-counter {
+  text-align: center;
+  margin: 0 5px 0 0;
+}
+
+.added__total {
+  text-align: center;
+  font-family: "Kaushan Script", cursive;
+  font-size: 25px;
+  margin: 0 0 20px 0;
+}
+
+.added__checkout {
+  padding: 8px;
+  border-radius: 4px;
+  color: var(--clr-white--);
+  background-color: var(--clr1-btn--);
+  transition: transform 0.3s ease;
+  margin: 0 auto 30px auto;
+  width: 210px;
+}
+.added__checkout:hover {
+  transform: scale(1.05);
+}
