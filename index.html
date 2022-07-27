@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comfy Store</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <div class="menu-burger"></div>
+    
+            <nav class="menu-list">
+                <li class="menu-home"><a href="#">Home</a></li>
+                <li class="menu-products"><a href="#">Products</a></li>
+                <li class="menu-about"><a href="#">About</a></li>
+            </nav>
+    
+            <div class="logo">Comfy</div>
+    
+            <div class="cart">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <div class="added-amount">0</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="wrapper">
+
+        <!-- PURCHASED -->
+        <aside class="added">
+            <div class="added__close">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div class="added__title">Your Bag</div>
+            <div class="added__items-list">
+            
+            </div>
+            <div class="added__total">Total: $0</div>
+            <button class="added__checkout hide">CHECKOUT</button>
+        </aside>
+
+        <!-- HOME -->
+        <section class="home page">
+            <div class="home__upper-part">
+                <div class="container">
+                    <div class="home__upper-title">Rest, Relax, Unwind</div>
+                    <div class="home__upper-subtitle">Embrace your choices - we do</div>
+                    <button class="home__upper-button">SHOW NOW</button>
+                </div>
+            </div>
+            <div class="home__lower-part">
+                <div class="container">
+                    <div class="home__lower-title"><span>/</span> Featured</div>
+                    <div class="home__items-list items-list">
+
+                    </div>
+                    <button id="bottom" class="home__lower-button">ALL PRODUCTS</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCTS -->
+        <section class="products page hide">
+            <div class="page-title">
+                <div class="container">
+                    Home / Products
+                </div>
+            </div>
+            <div class="products__content">
+                <div class="container">
+                    <aside class="products__action">
+                        <input type="text" class="products__input" placeholder="Search...">
+                        <nav class="products__navigation">
+                            <div class="products__navigation-title">Company</div>
+                            <ul class="products__navigation-list">
+                                <li><button class="products__navigation-buttons" id="selected" type="button">All</button>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="products__range">
+                            <div class="products__range-title">Price</div>
+                            <input class="products__range-input" type="range" name="price-range" min="10"
+                                max="100" step="1"><br>
+                            <output id="output" name="range-price"></output>
+                        </div>
+                    </aside>
+                    <div class="products__items-list items-list">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="about page hide">
+            <div class="page-title">
+                <div class="container">
+                    Home / About
+                </div>
+            </div>
+            <div class="about__info">
+                <div class="about__title"><span>/</span> Our History</div>
+                <div class="about__text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam deserunt cum
+                    atque!
+                    Eos enim eveniet voluptatem accusantium atque quod eum aliquam molestias. Deleniti veritatis illo
+                    ratione
+                    quia eveniet sapiente quis quibusdam. Tempore ullam aspernatur quos! Ex inventore eos corporis
+                    aliquam,
+                    nostrum minima quaerat laboriosam temporibus aperiam cupiditate nobis aut culpa. Nam nesciunt est
+                    doloribus
+                    quae quos magni. Nemo sed facere, est voluptatibus, officiis animi eligendi, illum earum alias
+                    corrupti
+                    fugit aut suscipit excepturi quisquam? Sit, optio assumenda ratione praesentium quos sed perferendis
+                    ex
+                    consequuntur exercitationem magni eaque eligendi natus expedita numquam qui delectus minima
+                    consequatur
+                    maiores alias inventore omnis aut!</div>
+            </div>
+        </section>
+    </main>
+    <script src="https://kit.fontawesome.com/78571f7f59.js" crossorigin="anonymous"></script>
+    <script src="./js/script.js" type="module"></script>
+</body>
+
+</html>
