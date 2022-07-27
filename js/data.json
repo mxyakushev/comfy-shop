@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "company": "Ikea",
+        "image": "./img/chair.jpg",
+        "price": 10,
+        "name": "High-Back Bench"
+    },
+    {
+        "id": 2,
+        "company": "Marcos",
+        "image": "./img/sofa.jpg",
+        "price": 80,
+        "name": "Albany Table"
+    },
+    {
+        "id": 3,
+        "company": "Caressa",
+        "image": "./img/sofa.webp",
+        "price": 19,
+        "name": "Folding Sofa"
+    },
+    {
+        "id": 4,
+        "company": "Liddy",
+        "image": "./img/sitter.webp",
+        "price": 13,
+        "name": "High-Back Bench"
+    },
+    {
+        "id": 5,
+        "company": "Ikea",
+        "image": "./img/bed.jpg",
+        "price": 45,
+        "name": "Nice Bed"
+    },
+    {
+        "id": 6,
+        "company": "Marcos",
+        "image": "./img/bed2.jpg",
+        "price": 90,
+        "name": "Luxury Bed"
+    },
+    {
+        "id": 7,
+        "company": "Caressa",
+        "image": "./img/chair2.jpg",
+        "price": 20,
+        "name": "Reading Chair"
+    }
+]

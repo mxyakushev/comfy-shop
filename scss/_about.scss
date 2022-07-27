@@ -1,0 +1,25 @@
+.about {
+    padding: 85px 0 50px;
+}
+
+.about__title {
+    font-size: 28px;
+    font-weight: 500;
+    text-align: center;
+    margin: 0 0 40px 0;
+
+    span {
+        &:first-child {
+            color: var(--clr1-btn--);
+        }
+    }
+}
+
+.about__text {
+    padding: 0 30px;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    line-height: 26px;
+    color: var(--clr3-text--);
+}
